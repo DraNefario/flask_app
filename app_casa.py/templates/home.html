@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content%}
     <h3>Acesse o menu:</h3>
+    {% if session.admin %}
         <ul>
             <li><a href="/register_user">Cadastrar Usuários</a></li>
             <li><a href="/register_sensor">Cadastrar Sensores</a></li>
@@ -12,4 +13,6 @@
             <li><a href="/remove_sensor">Remover Sensor</a></li>
             <li><a href="/remove_atuador">Remover Atuador</a></li>
         </ul>
+    {% endif %}
+        <p>Voltar para <a href="/">página inicial</a>!</p>
 {% endblock%}

@@ -1,4 +1,15 @@
-{% extends"base.html" %}
-{% block content%}
-<h1>Usuários</h1>
-{% endblock%}
+<html>
+<head>
+    <title>Lista de Usuarios</title>
+</head>
+<body>
+    <h1>Usuarios Cadastrados</h1>
+    <ul>
+        {% for username, password in devices.items() %}
+            <li>{{ username }} - senha: {{ password }}</li>
+        {% endfor %}
+    </ul>
+    <br>
+    <a href="/register_user">Cadastrar Novo usuario</a> | <a href="/home">Voltar ao Início</a>
+</body>
+</html>

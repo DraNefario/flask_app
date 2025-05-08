@@ -1,5 +1,6 @@
 #actuators.py
-from flask import Blueprint, request, render_template, redirect, url_for
+from flask import Blueprint, request, render_template, redirect, url_for, session
+from auth import admin_required, login_required
 
 
 actuators = Blueprint("atuador",__name__, template_folder="templates")
@@ -14,6 +15,7 @@ def register_atuador():
 
 # Rota para adicionar sensor
 @actuators.route('/add_atuador', methods=['POST'])
+@admin_required
 def add_atuador():
     global atuadores
     nome = request.form['nome']
@@ -31,10 +33,12 @@ def list_actuators():
 
 # Rota para remover atuador
 @actuators.route('/remove_atuador')
+@admin_required
 def remove_atuador():
     return render_template("remove_atuador.html", devices=atuadores)
 
 @actuators.route('/del_atuador', methods=['POST'])
+@admin_required
 def del_atuador():
     global atuadores
     nome_atuador = request.form['nome']
