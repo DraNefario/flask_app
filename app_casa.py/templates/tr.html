@@ -1,0 +1,48 @@
+<html>
+    <head>
+        {% block title %}
+        <meta charset="UTF-8">
+        <title>Modulo IOT</title>
+        <meta http-equiv="refresh" content="5">
+        {% endblock %}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" href="static/css/style.css" />
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="#">
+                    <img src="static/img/170781.jpg" width="30" height="30" alt="">
+                </a>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+        <div id="content">
+            {% block content %} {% endblock %}
+        </div>
+    </body>
+<body>
+    <ul>
+        {% for key, value in values.items() %}
+            {% if key== 'temperature' %}
+                <a class="navbar-brand" href="/home">
+                    <img src="static/img/imagem3.png" width="60" height="60" alt="">
+                </a>
+                    <td> {{ value }} ºC </td>
+            {% else %}
+                <a class="navbar-brand" href="#">
+                    <img src="static/img/imagem4.png" width="60" height="60" alt="">
+                </a>
+                    <td> {{ value }} % </td>
+            {% endif %}        
+        {% endfor %}
+    </ul>
+</body>
+</html>
