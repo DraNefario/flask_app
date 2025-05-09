@@ -1,7 +1,7 @@
 # mqtt_routes.py
 from flask import Blueprint, render_template, request, jsonify
 from flask_mqtt import Mqtt
-from flask_login import login_required
+from auth import admin_required, login_required
 import json
 
 mqtt_routes = Blueprint('mqtt_routes', __name__)
@@ -18,6 +18,7 @@ def init_mqtt(app, mqtt):
 
     @mqtt.on_connect()
     def handle_connect(client, userdata, flags, rc):
+        print("Tentando conectar ao MQTT...")
         if rc == 0:
             print("Connected to MQTT broker")
             mqtt.subscribe(topic_subscribe)
@@ -48,5 +49,5 @@ def publish():
 @login_required
 def publish_message():
     request_data = request.get_json()
-    result = mqtt.publish(request_data['topic'], request_data['message'])
+    result = mqtt_instance.publish(request_data['topic'], request_data['message'])
     return jsonify(result)

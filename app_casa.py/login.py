@@ -11,6 +11,10 @@ users = {
     'user1': '1234'
 }
 
+@user.route('/home')
+def home():
+    return render_template('home.html')
+
 @user.route('/')
 def index():
     return render_template("login.html")

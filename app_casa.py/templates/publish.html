@@ -17,7 +17,6 @@
                         <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
-
             </div>
         </nav>
     </body>
@@ -159,7 +158,7 @@
       data = "0";
     }
     $.ajax({
-        url: "{{ url_for('publish_message') }}",
+        url: "{{ url_for('mqtt_routes.publish_message') }}",
         contentType: 'application/json;charset=UTF-8',
         cache: false,
         method: 'POST',

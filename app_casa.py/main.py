@@ -5,18 +5,20 @@ from sensors import sensors
 from mqtt_routes import mqtt_routes, init_mqtt
 
 from flask_mqtt import Mqtt
-import flask_login
 
 app = Flask(__name__)
+
 app.secret_key = 'newton'
 
+
 # MQTT Config
-app.config['MQTT_BROKER_URL'] = 'broker.emqx.io'
-app.config['MQTT_BROKER_PORT'] = 1883
-app.config['MQTT_USERNAME'] = ''
-app.config['MQTT_PASSWORD'] = ''
-app.config['MQTT_KEEPALIVE'] = 60
+app.config['MQTT_BROKER_URL'] = 'broker.emqx.io'  
+app.config['MQTT_BROKER_PORT'] = 8084  
+app.config['MQTT_USERNAME'] = 'thomas' 
+app.config['MQTT_PASSWORD'] = ''  
+app.config['MQTT_KEEPALIVE'] = 60  
 app.config['MQTT_TLS_ENABLED'] = False
+app.config['MQTT_PATH'] = '/mqtt'  
 
 mqtt = Mqtt(app)
 
