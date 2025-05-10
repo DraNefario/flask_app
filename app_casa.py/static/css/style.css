@@ -1,0 +1,38 @@
+
+html, body {
+    margin:0;
+    height:100%;
+    overflow:auto;
+  }
+
+.container .forms{
+    margin-top: 50px;
+    padding-top: 50px;
+    border-color: black;
+}
+
+.container .view{
+    margin-top: 50px;
+    padding-top: 50px;
+}
+
+.view tr { height: 20px; }
+
+.vertical-center {
+    min-height: 90%;  /* Fallback for browsers do NOT support vh unit */
+    
+    /* min-height: 100vh; These two lines are counted as one :-)       */
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+  .vertical-center img {
+    position: relative;
+    max-width: 100%;
+} 
+.form-check,
+.form-label{
+    padding-top: 10px;
+}

@@ -1,0 +1,15 @@
+<html>
+<head>
+    <title>Lista de Atuadores</title>
+</head>
+<body>
+    <h1>Atuadores Cadastrados</h1>
+    <ul>
+        {% for atuador in atuadores %}
+            <li><strong>{{ atuador.nome }}</strong> ({{ atuador.tipo }}): {{ atuador.valor }}</li>
+        {% endfor %}
+    </ul>
+    <br>
+    <a href="/register_atuador">Cadastrar Novo atuador</a> | <a href="/home">Voltar ao Início</a>
+</body>
+</html>

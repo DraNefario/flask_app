@@ -1,0 +1,13 @@
+<html>
+    <body>
+        <form action = "http://localhost:8080/del_atuador" method = "post">
+            <select name="nome" class="input">
+                {% for atuador in devices %}
+                <option value="{{ atuador.nome }}">{{ atuador.nome }}</option>
+                {% endfor %}
+                <p><input type="submit" value="Deletar" /></p>
+            </select>
+        </form>
+        <a href="/home">Voltar ao Início</a>
+    </body>
+</html>
