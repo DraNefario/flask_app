@@ -11,10 +11,10 @@
         <!-- Cadastro de Sensor -->
         <div class="login-card">
             <h3 class="form-title">Cadastrar Sensor</h3>
-            <form action="http://localhost:8080/add_sensor" method="post">
-                <input type="text" name="sensor_name" placeholder="Nome do Sensor" required />
-                <input type="text" name="sensor_type" placeholder="Tipo do Sensor" required />
-                <input type="number" name="sensor_price" placeholder="Preço do Sensor" required />
+            <form action="{{ url_for('sensor.add_sensor') }}" method="post">
+                <input type="text" name="nome" placeholder="Nome do Sensor" required />
+                <input type="text" name="tipo" placeholder="Tipo do Sensor" required />
+                <input type="number" name="valor" placeholder="Preço do Sensor" required />
                 <button type="submit">Cadastrar Sensor</button>
                 <a href="/home">Voltar ao Início</a>
             </form>

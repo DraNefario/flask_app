@@ -7,10 +7,10 @@
     <body>
         <div class="login-card">
             <h3 class="form-title">Cadastrar Atuador</h3>
-            <form action="http://localhost:8080/add_actuator" method="post">
-                <input type="text" name="actuator_name" placeholder="Nome do Atuador" required />
-                <input type="text" name="actuator_type" placeholder="Tipo do Atuador" required />
-                <input type="number" name="actuator_price" placeholder="Preço do Atuador" required />
+            <form action="{{ url_for('atuador.add_atuador') }}" method="post">
+                <input type="text" name="nome" placeholder="Nome do Sensor" required />
+                <input type="text" name="tipo" placeholder="Tipo do Sensor" required />
+                <input type="number" name="valor" placeholder="Preço do Sensor" required />
                 <button type="submit">Cadastrar Atuador</button>
             </form>
         </div>
