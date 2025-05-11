@@ -1,13 +1,21 @@
 <html>
-    <body>
-        <form action = "http://localhost:8080/del_user" method = "post">
-            <select name="user" class="input">
+<head>
+    <meta charset="UTF-8">
+    <title>Deletar Usuário</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='delete_user.css') }}">
+</head>
+<body>
+    <h2>Deletar Usuário</h2>
+    <div class="delete-card">
+        <form action="http://localhost:8080/del_user" method="post">
+            <select name="user">
                 {% for key, value in devices.items() %}
-                <option>{{ key }}</option>
+                <option value="{{ key }}">{{ key }}</option>
                 {% endfor %}
-                <p><input type="submit" value="Deletar" /></p>
             </select>
+            <input type="submit" value="Deletar" />
         </form>
-        <a href="/home">Voltar ao Início</a>
-    </body>
+    </div>
+    <a href="/home">Voltar ao Início</a>
+</body>
 </html>
