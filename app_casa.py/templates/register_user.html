@@ -1,12 +1,17 @@
 <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Exemplo com CSS</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='register_user.css') }}">
+    </head>
     <body>
-        <form action = "http://localhost:8080/add_user" method = "post">
-            <p>Usuário:</p>
-            <p><input type = "text" name = "user" placeholder="User" required/></p>
-            <p>Senha:</p>
-            <p><input type = "text" name = "password" placeholder="Password" required/></p>
-            <p><input type = "submit" value = "Cadastrar" /></p>
-        </form>
-        <a href="/home">Voltar ao Início</a>
+        <h2 class="titulo">Cadrastrar Novo Usuario</h2>
+        <div class="login-card">
+            <form action = "http://localhost:8080/add_user" method = "post">
+                <input type="text" name="user" placeholder="Username or e-mail" required />
+                <input type="password" name="password" placeholder="Password" required />
+                <button type="submit">Cadrastrar</button>
+            </form>
+            <a href="/home">Voltar ao Início</a>
     </body>
 </html>
