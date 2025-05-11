@@ -1,15 +1,20 @@
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Lista de Usuarios</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='listar_user.css') }}">
 </head>
 <body>
-    <h1>Usuarios Cadastrados</h1>
-    <ul>
-        {% for username, password in devices.items() %}
-            <li>{{ username }} - senha: {{ password }}</li>
-        {% endfor %}
-    </ul>
+    <h1 class="titulo">Usuarios Cadastrados</h1>
+    <div class="login-card">
+        <ul>
+            {% for username, password in devices.items() %}
+                <li>{{ username }} - senha: {{ password }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <a href="/home">Voltar ao Início</a>
     <br>
-    <a href="/register_user">Cadastrar Novo usuario</a> | <a href="/home">Voltar ao Início</a>
+    <a href="/register_user">Cadastrar Novo Usuario</a> 
 </body>
 </html>
