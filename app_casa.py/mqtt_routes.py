@@ -28,11 +28,15 @@ def init_mqtt(app, mqtt):
     @mqtt.on_message()
     def handle_mqtt_message(client, userdata, message):
         global temperature, huminity
+        print(f"[MQTT] Mensagem recebida em {message.topic}: {message.payload.decode()}")
+              
         js = json.loads(message.payload.decode())
         if js["sensor"] == "/aula_flask/temperature":
             temperature = js["valor"]
         elif js["sensor"] == "/aula_flask/huminity":
             huminity = js["valor"]
+        elif js["sensor"] == "/aula_flask/comando":
+            print(f"[COMANDO] Recebido do ESP: {js['valor']}")
 
 @mqtt_routes.route('/tempo_real')
 @login_required
