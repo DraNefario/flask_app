@@ -1,0 +1,20 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Sensores</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/listar_sensor.css') }}">
+</head>
+<body>
+    <h1 class="titulo">Sensores Cadastrados</h1>
+    <div class="login-card">
+        <ul>
+            {% for sensor in sensores %}
+                <li><strong>{{ sensor.nome }}</strong> ({{ sensor.tipo }}): {{ sensor.valor }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <br>
+    <a href="/register_sensor">Cadastrar Novo Sensor</a> 
+     <a href="/home">Voltar ao Início</a>
+</body>
+</html>
