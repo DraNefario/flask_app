@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Cadastro de Sensor/Atuador</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/register_atuador.css') }}">
+    </head>
+    <body>
+        <div class="login-card">
+            <h3 class="form-title">Cadastrar Atuador</h3>
+            <form action="{{ url_for('atuador.add_atuador') }}" method="post">
+                <input type="text" name="nome" placeholder="Nome do Sensor" required />
+                <input type="text" name="tipo" placeholder="Tipo do Sensor" required />
+                <input type="number" name="valor" placeholder="Preço do Sensor" required />
+                <button type="submit">Cadastrar Atuador</button>
+            </form>
+        </div>
+        <a href="/home">Voltar ao Início</a>
+    </body>
+</html>

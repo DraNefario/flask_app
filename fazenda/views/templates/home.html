@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<script src="{{ url_for('static', filename='admin.js') }}" defer></script>
+
+<div class="layout">
+    <div class="sidebar">
+        <a href="/home" class="home-icon-wrapper">
+            <img src="{{ url_for('static', filename='img/icon-home.png') }}" class="sidebar-icon">
+            <label>Home</label>
+        </a>
+        
+        <a href="/" class="back-button">
+            <img src="{{ url_for('static', filename='img/voltar.png') }}" class="sidebar-icon">
+            <label>Back</label>
+        </a>
+    </div>
+
+    <div class="main-content">
+        <a href="/publish" class="card-link">
+            <div class="card">
+                <p>Publicar dados</p>
+            </div>
+        </a>
+        <a href="/tempo_real" class="card-link">
+            <div class="card">
+                <p>Visualizar Tempo Real</p>
+            </div>
+        </a>
+    </div>    
+</div>
+
+{% if session.admin %}
+<div class="admin-dropdown">
+    <button class="admin-toggle" type="button">
+        <img src="{{ url_for('static', filename='img/icon-config.png') }}" alt="Admin">
+    </button>
+    <div class="admin-menu-content">
+        <a href="/register_user">Cadastrar Usuários</a>
+        <a href="/register_sensor">Cadastrar Sensores</a>
+        <a href="/register_atuador">Cadastrar Atuadores</a>
+        <a href="/list_users">Listar Usuários</a>
+        <a href="/list_sensors">Listar Sensores</a>
+        <a href="/list_actuators">Listar Atuadores</a>
+        <a href="/remove_user">Remover Usuário</a>
+        <a href="/remove_sensor">Remover Sensor</a>
+        <a href="/remove_atuador">Remover Atuador</a>
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const dropdown = document.querySelector(".admin-dropdown");
+        const toggle = document.querySelector(".admin-toggle");
+
+        if (dropdown && toggle) {
+            toggle.addEventListener("click", () => {
+                dropdown.classList.toggle("open");
+            });
+
+            // Fecha o menu se clicar fora dele
+            window.addEventListener("click", (e) => {
+                if (!dropdown.contains(e.target) && !toggle.contains(e.target)) {
+                    dropdown.classList.remove("open");
+                }
+            });
+        }
+    });
+</script>
+{% endif %}
+{% endblock %}
