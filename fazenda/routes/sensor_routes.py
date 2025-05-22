@@ -4,7 +4,7 @@ from flask import Blueprint, request, render_template
 from auth.decorators import admin_required
 from controllers.sensor_controller import handle_add_sensor, handle_list_sensors, handle_remove_sensor
 
-sensors_bp = Blueprint("sensors", __name__, template_folder="../views/templates")
+sensors_bp = Blueprint("sensors", __name__, template_folder="templates")
 
 @sensors_bp.route('/register_sensor')
 @admin_required

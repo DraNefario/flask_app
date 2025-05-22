@@ -6,7 +6,7 @@ from controllers.user_controller import (
 )
 from auth.decorators import admin_required
 
-user_bp = Blueprint("user", __name__, template_folder="../views/templates")
+user_bp = Blueprint("user", __name__, template_folder="templates")
 
 @user_bp.route('/')
 def index():

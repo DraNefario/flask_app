@@ -4,7 +4,7 @@ from flask import Blueprint, request, render_template
 from auth.decorators import admin_required
 from controllers.atuador_controller import handle_add_atuador, handle_list_atuadores, handle_remove_atuador
 
-atuadores_bp = Blueprint("atuadores", __name__, template_folder="../views/templates")
+atuadores_bp = Blueprint("atuadores", __name__, template_folder="templates")
 
 @atuadores_bp.route('/register_atuador')
 @admin_required

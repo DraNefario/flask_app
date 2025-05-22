@@ -1,0 +1,62 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    padding: 100px 0 0 0;
+    height: 100vh;
+    background-color: #49583a;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  h2 {
+    color: white;
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .delete-card {
+    background-color: #c8ccc0;
+    border-radius: 40px;
+    padding: 40px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  select {
+    width: 90%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    border: none;
+  }
+  
+  input[type="submit"] {
+    width: 160px;
+    padding: 12px;
+    background-color: #49583a;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+  }
+  
+  a {
+    color: white;
+    font-size: 18px;
+    margin-top: 20px;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  

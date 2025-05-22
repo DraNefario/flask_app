@@ -4,7 +4,7 @@ from flask import Blueprint, render_template, request, jsonify
 from auth.decorators import login_required
 from controllers.mqtt_controller import handle_get_mqtt_data, handle_publish_message
 
-mqtt_routes_bp = Blueprint('mqtt_routes', __name__, template_folder="../views/templates")
+mqtt_routes_bp = Blueprint('mqtt_routes', __name__, template_folder="templates")
 
 @mqtt_routes_bp.route('/tempo_real')
 @login_required
