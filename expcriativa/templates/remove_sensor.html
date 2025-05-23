@@ -1,0 +1,21 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Deletar Sensor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/delete_sensor.css') }}">
+</head>
+<body>
+    <h2>Deletar Sensor</h2>
+    <div class="delete-card">
+        <form action="http://localhost:8080/del_sensor" method="post">
+            <select name="nome">
+                {% for sensor in devices %}
+                <option value="{{ sensor.nome }}">{{ sensor.nome }}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Deletar" />
+        </form>
+    </div>
+    <a href="/home">Voltar ao Início</a>
+</body>
+</html>

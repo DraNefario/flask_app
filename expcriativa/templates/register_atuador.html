@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Cadastro de Sensor/Atuador</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/register_atuador.css') }}">
+    </head>
+    <body>
+        <div class="login-card">
+            <h3 class="form-title">Cadastrar Atuador</h3>
+            <form action = "http://localhost:8080/add_actuator" method = "post">
+                <input type="text" name="name" placeholder="Nome do Atuador" required />
+                <input type="text" name="brand" placeholder="Marca do Atuador" required />
+                <input type="text" name="model" placeholder="Modelo do Atuador" required />
+                <input type="number" name="unit" placeholder="Unidades" required />
+                <input type="text" name="topic" placeholder="Topico MQTT" required />
+                <div>
+                        <input type="checkbox" id="is_active" name="is_active" checked />
+                        <label for="is_active">Ativo?</label>
+                    </div>
+                <button type="submit">Cadastrar Atuador</button>
+                <a href="/home">Voltar ao Início</a>
+            </form> 
+        </div>
+        <a href="/home">Voltar ao Início</a>
+    </body>
+</html>
