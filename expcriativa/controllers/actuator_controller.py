@@ -1,6 +1,8 @@
 #controllers.actuator_controller.py
 from flask import Blueprint, request, render_template, redirect, url_for
 from models.iot.actuators import Actuator
+from utils.decorators import login_required, admin_required
+
 
 actuator_ = Blueprint("Actuator_", __name__, template_folder="templates")
 

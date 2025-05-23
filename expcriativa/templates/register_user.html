@@ -1,17 +1,22 @@
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Exemplo com CSS</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/register_user.css') }}">
-    </head>
-    <body>
-        <h2 class="titulo">Cadrastrar Novo Usuario</h2>
-        <div class="login-card">
-            <form action = "http://localhost:8080/add_user" method = "post">
-                <input type="text" name="user" placeholder="Username or e-mail" required />
-                <input type="password" name="password" placeholder="Password" required />
-                <button type="submit">Cadrastrar</button>
-            </form>
-            <a href="/home">Voltar ao Início</a>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Novo Usuário</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register_user.css') }}">
+</head>
+<body>
+    <h2 class="titulo">Cadastrar Novo Usuário</h2>
+    <div class="login-card">
+        {% if erro %}
+            <p style="color:red">{{ erro }}</p>
+        {% endif %}
+        <form action="{{ url_for('auth.add_user') }}" method="post">
+            <input type="text" name="username" placeholder="Nome de usuário" required />
+            <input type="email" name="email" placeholder="E-mail" required />
+            <input type="password" name="senha" placeholder="Senha" required />
+            <button type="submit">Cadastrar</button>
+        </form>
+        <a href="/">Voltar ao Login</a>
+    </div>
+</body>
 </html>
