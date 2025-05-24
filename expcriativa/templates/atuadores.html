@@ -1,20 +1,64 @@
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <title>Lista de Atuadores</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/listar_atuador.css') }}">
 </head>
 <body>
-    <h1 class="titulo">Atuadores Cadastrados</h1>
-    <div class="login-card">
-        <ul>
-            {% for atuador in atuadores %}
-                <li><strong>{{ atuador.nome }}</strong> ({{ atuador.tipo }}): {{ atuador.valor }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-    <br>
-    <a href="/register_atuador">Cadastrar Novo Atuador</a> 
-     <a href="/home">Voltar ao Início</a>
+    <main>
+        <h1 class="titulo">Atuadores Cadastrados</h1>
+
+        <div class="login-card">
+            {% if actuators|length > 0 %}
+                <table class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>Tópico</th>
+                            <th>Unidade</th>
+                            <th>Ativo?</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for actuator in actuators %}
+                            <tr>
+                                <td>{{ actuator.name }}</td>
+                                <td>{{ actuator.brand }}</td>
+                                <td>{{ actuator.model }}</td>
+                                <td>{{ actuator.topic }}</td> 
+                                <td>{{ actuator.unit }}</td>
+                                <td>
+                                    {% if actuator.is_active %}
+                                        Ativo
+                                    {% else %}
+                                        Desativado
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a href="http://localhost:8080/edit_actuator?id={{ actuator.id }}">Editar</a> |
+                                    <a href="http://localhost:8080/del_actuator?id={{ actuator.id }}">Deletar</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>Nenhum atuador cadastrado até o momento.</p>
+            {% endif %}
+        </div>
+
+        <nav>
+            <form action="http://localhost:8080/register_actuator" style="display: inline;">
+                <input type="submit" value="Cadastrar Novo Atuador" />
+            </form>
+            <form action="http://localhost:8080/home" style="display: inline;">
+                <input type="submit" value="Voltar ao Início" />
+            </form>
+        </nav>
+    </main>
 </body>
 </html>

@@ -1,20 +1,64 @@
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Lista de Sensores</title>
+    <title>Lista de Atuadores</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/listar_sensor.css') }}">
 </head>
 <body>
+<main>
     <h1 class="titulo">Sensores Cadastrados</h1>
+
     <div class="login-card">
-        <ul>
-            {% for sensor in sensores %}
-                <li><strong>{{ sensor.nome }}</strong> ({{ sensor.tipo }}): {{ sensor.valor }}</li>
-            {% endfor %}
-        </ul>
+        {% if sensors|length > 0 %}
+            <table class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Tópico</th>
+                        <th>Unidade</th>
+                        <th>Ativo?</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for sensor in sensors %}
+                        <tr>
+                            <td>{{ sensor.name }}</td>
+                            <td>{{ sensor.brand }}</td>
+                            <td>{{ sensor.model }}</td>
+                            <td>{{ sensor.topic }}</td> 
+                            <td>{{ sensor.unit }}</td>
+                            <td>
+                                {% if sensor.is_active %}
+                                    Ativo
+                                {% else %}
+                                    Desativado
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="http://localhost:8080/edit_sensor?id={{ sensor.id }}">Editar</a> |
+                                <a href="http://localhost:8080/del_sensor?id={{ sensor.id }}">Deletar</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Ainda não há sensores registrados!</p>
+        {% endif %}
     </div>
-    <br>
-    <a href="/register_sensor">Cadastrar Novo Sensor</a> 
-     <a href="/home">Voltar ao Início</a>
+
+    <nav>
+            <form action="http://localhost:8080/register_sensor" style="display: inline;">
+                <input type="submit" value="Cadastrar Novo Sensor" />
+            </form>
+            <form action="http://localhost:8080/home" style="display: inline;">
+                <input type="submit" value="Voltar ao Início" />
+            </form>
+        </nav>
+    </main>
 </body>
 </html>

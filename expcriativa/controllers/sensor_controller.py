@@ -21,9 +21,10 @@ def add_sensor():
 
     Sensor.save_sensor(name, brand, model, topic, unit, is_active )
 
+    sensors = Sensor.get_sensors()
     return render_template("sensors.html")
 
-@sensor_.route('/sensors')
+@sensor_.route('/list_sensors')
 def sensors():
     sensors = Sensor.get_sensors()
     return render_template("sensors.html", sensors = sensors)

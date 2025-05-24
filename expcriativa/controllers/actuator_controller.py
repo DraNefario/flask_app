@@ -6,9 +6,9 @@ from utils.decorators import login_required, admin_required
 
 actuator_ = Blueprint("Actuator_", __name__, template_folder="templates")
 
-@actuator_.route('/register_atuator')
-def register_sensor():
-    return render_template("register_atuator.html")
+@actuator_.route('/register_atuador')
+def register_actuator():
+    return render_template("register_atuador.html")
 
 
 @actuator_.route('/add_actuator', methods = ['POST'])
@@ -22,5 +22,10 @@ def add_actuator():
 
     Actuator.save_actuator(name, brand, model, topic, unit, is_active )
 
-    actuators = Actuator.get_actuators()
+    actuators = Actuator.get_actuator()
+    return render_template("atuadores.html", actuators = actuators)
+
+@actuator_.route('/list_actuators')
+def actuators():
+    actuators = Actuator.get_actuator()
     return render_template("atuadores.html", actuators = actuators)

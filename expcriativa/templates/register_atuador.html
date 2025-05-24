@@ -7,7 +7,7 @@
     <body>
         <div class="login-card">
             <h3 class="form-title">Cadastrar Atuador</h3>
-            <form action = "http://localhost:8080/add_actuator" method = "post">
+            <form action="{{ url_for('Actuator_.add_actuator') }}" method="post">
                 <input type="text" name="name" placeholder="Nome do Atuador" required />
                 <input type="text" name="brand" placeholder="Marca do Atuador" required />
                 <input type="text" name="model" placeholder="Modelo do Atuador" required />
