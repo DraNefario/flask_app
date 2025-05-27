@@ -15,22 +15,25 @@
             <label>Back</label>
         </a>
     </div>
-
     <div class="main-content">
+        {% if current_user.has_role('operador') or current_user.has_role('admin') %}
         <a href="/publish" class="card-link">
             <div class="card">
                 <p>Publicar dados</p>
             </div>
         </a>
-        <a href="/tempo_real" class="card-link">
+        {% endif %}
+        {% if current_user.has_role('estatistico') or current_user.has_role('admin') %}
+        <a href="/tr" class="card-link">
             <div class="card">
                 <p>Visualizar Tempo Real</p>
             </div>
         </a>
+        {% endif %}
     </div>    
 </div>
 
-{% if current_user.has_role('admin') %}
+{% if current_user.has_role('admin') or current_user.has_role('estatistico') or current_user.has_role('operador')%}
 <div class="admin-dropdown">
     <button class="admin-toggle" type="button">
         <img src="{{ url_for('static', filename='img/icon-config.png') }}" alt="Admin">
@@ -42,9 +45,6 @@
         <a href="/list_users">Listar Usuários</a>
         <a href="/list_sensors">Listar Sensores</a>
         <a href="/list_actuators">Listar Atuadores</a>
-        <a href="/remove_user">Remover Usuário</a>
-        <a href="/remove_sensor">Remover Sensor</a>
-        <a href="/remove_atuador">Remover Atuador</a>
     </div>
 </div>
 {% endif %}

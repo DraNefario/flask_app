@@ -10,19 +10,24 @@
     <header>
         {% if current_user.is_authenticated %}
             <p>Olá, {{ current_user.username }}!</p>
-            <a href="{{ url_for('auth_logout') }}">Sair</a>
+            <a href="{{ url_for('auth.logout') }}">Sair</a>
         {% else %}
-            <a href="{{ url_for('user_.index') }}">Login</a>
+            <a href="{{ url_for('user_.login') }}">Login</a>
         {% endif %}
 
         {% if current_user.is_authenticated %}
             {% if current_user.has_role('admin') %}
-                <a href="/admin_dashboard">Admin</a>
+                <a>admin</a>
             {% endif %}
 
             {% if current_user.has_role('estatistico') %}
-                <a href="/estatistico">Estatístico</a>
+                <a>Estatístico</a>
             {% endif %}
+
+            {% if current_user.has_role('operador') %}
+                <a>Operador</a>
+            {% endif %}
+            
         {% endif %}
     </header>
 

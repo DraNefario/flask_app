@@ -6,7 +6,7 @@ def login_required_custom(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
         if not current_user.is_authenticated:
-            return redirect(url_for("user_.index"))
+            return redirect(url_for("user_.login"))
         return f(*args, **kwargs)
     return decorated_function
 
@@ -15,7 +15,7 @@ def role_required(*required_roles):
         @wraps(f)
         def decorated_function(*args, **kwargs):
             if not current_user.is_authenticated:
-                return redirect(url_for("user_.index"))
+                return redirect(url_for("user_.login"))
 
             if not any(current_user.has_role(role) for role in required_roles):
                 return redirect(url_for("user_.home"))

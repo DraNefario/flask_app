@@ -32,7 +32,7 @@ def add_user():
         db.session.add(novo_usuario)
         db.session.commit()
 
-        return redirect(url_for("user_.index"))
+        return redirect(url_for("user_.home"))
 
     return render_template("register_user.html")
 
@@ -44,7 +44,7 @@ def validated_user():
     user = User.query.filter_by(username=username).first()
 
     if user and user.verificar_senha(senha):
-        login_user(user)  # Sessão iniciada com Flask-Login
+        login_user(user)  
         return redirect(url_for("user_.home"))
 
     return render_template("login.html", erro="Usuário ou senha inválidos")
@@ -54,4 +54,4 @@ def validated_user():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for("user_.index"))
+    return redirect(url_for("user_.login"))

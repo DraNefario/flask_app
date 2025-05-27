@@ -18,7 +18,3 @@ class User(db.Model, UserMixin):
 
     def has_role(self, role):
         return role in self.roles.split(",")
-
-    @staticmethod
-    def list_user():
-        return User.query.add_columns(User.username, User.email, User.roles).all()
