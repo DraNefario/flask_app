@@ -1,5 +1,37 @@
-<html>
-    <body>
-            {% block content %} {% endblock %}
-    </body>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Minha Aplicação{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block head_extra %}{% endblock %}
+</head>
+<body>
+    <header>
+        {% if current_user.is_authenticated %}
+            <p>Olá, {{ current_user.username }}!</p>
+            <a href="{{ url_for('auth_logout') }}">Sair</a>
+        {% else %}
+            <a href="{{ url_for('user_.index') }}">Login</a>
+        {% endif %}
+
+        {% if current_user.is_authenticated %}
+            {% if current_user.has_role('admin') %}
+                <a href="/admin_dashboard">Admin</a>
+            {% endif %}
+
+            {% if current_user.has_role('estatistico') %}
+                <a href="/estatistico">Estatístico</a>
+            {% endif %}
+        {% endif %}
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    {% block scripts %}
+        <!-- JS comuns a todas as páginas -->
+    {% endblock %}
+</body>
 </html>

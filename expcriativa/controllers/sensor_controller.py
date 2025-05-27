@@ -1,7 +1,7 @@
 #sensors_controller.py
 from flask import Blueprint, request, render_template, redirect, url_for
 from models.iot.sensors import Sensor
-from utils.decorators import login_required, admin_required
+from utils.decorators import *
 
 
 sensor_ = Blueprint("sensor_",__name__, template_folder="templates")

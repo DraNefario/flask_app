@@ -1,8 +1,8 @@
 {% extends "base.html" %}
-{% block content %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-<script src="{{ url_for('static', filename='admin.js') }}" defer></script>
 
+{% block title %}Painel Admin{% endblock %}
+
+{% block content %}
 <div class="layout">
     <div class="sidebar">
         <a href="/home" class="home-icon-wrapper">
@@ -30,8 +30,7 @@
     </div>    
 </div>
 
-{% if session.admin %}
-
+{% if current_user.has_role('admin') %}
 <div class="admin-dropdown">
     <button class="admin-toggle" type="button">
         <img src="{{ url_for('static', filename='img/icon-config.png') }}" alt="Admin">
@@ -48,6 +47,11 @@
         <a href="/remove_atuador">Remover Atuador</a>
     </div>
 </div>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='admin.js') }}" defer></script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -59,7 +63,6 @@
                 dropdown.classList.toggle("open");
             });
 
-            // Fecha o menu se clicar fora dele
             window.addEventListener("click", (e) => {
                 if (!dropdown.contains(e.target) && !toggle.contains(e.target)) {
                     dropdown.classList.remove("open");
@@ -68,6 +71,4 @@
         }
     });
 </script>
-
-{% endif %}
 {% endblock %}

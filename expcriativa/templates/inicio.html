@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Irrigação Automática</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/inicio.css') }}" />
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <h1>Irrigação Automática Inteligente<br>para Pequenos Agricultores</h1>
+            <p>
+                Desenvolvemos um sistema de irrigação automatizada de baixo custo, pensado para pequenos agricultores, que visa otimizar o uso da água e aumentar a produtividade, utilizando sensores e tecnologia acessível. Somos um projeto extensionista, com propósito claro de gerar impacto social e ambiental positivo, promovendo autonomia, sustentabilidade e acesso à inovação no campo.
+            </p>
+            <div class="login">
+                Já tem login?<a href="/login">Entre</a>
+            </div>
+        </div>
+        <div class="right">
+            <img src="{{ url_for('static', filename='img/inicio.jpg') }}" alt="Imagem de fundo">
+        </div>
+    </div>
+</body>
+</html>

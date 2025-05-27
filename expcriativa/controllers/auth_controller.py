@@ -1,5 +1,5 @@
-#auth_controller.py
-from flask import Blueprint, render_template, request, redirect, session, url_for
+from flask import Blueprint, render_template, request, redirect, url_for
+from flask_login import login_user, logout_user, login_required
 from models.db import db
 from models.user.user import User
 
@@ -12,13 +12,21 @@ def add_user():
         username = request.form["username"]
         email = request.form["email"]
         senha = request.form["senha"]
+        roles = request.form.getlist("roles")  # <- Captura os perfis selecionados
 
+        # Verifica se já existe username ou email
         if User.query.filter((User.username == username) | (User.email == email)).first():
             return render_template("register_user.html", erro="Usuário ou email já cadastrado")
 
-        is_admin = User.query.count() == 0  
+        # Se for o primeiro usuário, adiciona automaticamente o papel admin
+        if User.query.count() == 0 and "admin" not in roles:
+            roles.append("admin")
 
-        novo_usuario = User(username=username, email=email, is_admin=is_admin)
+        novo_usuario = User(
+            username=username,
+            email=email,
+            roles=",".join(roles)
+        )
         novo_usuario.set_senha(senha)
 
         db.session.add(novo_usuario)
@@ -28,13 +36,22 @@ def add_user():
 
     return render_template("register_user.html")
 
+
 @auth_.route("/validate_user", methods=["POST"])
 def validated_user():
     username = request.form["username"]
     senha = request.form["senha"]
     user = User.query.filter_by(username=username).first()
+
     if user and user.verificar_senha(senha):
-        session["user_id"] = user.id
-        session["admin"] = user.is_admin
+        login_user(user)  # Sessão iniciada com Flask-Login
         return redirect(url_for("user_.home"))
+
     return render_template("login.html", erro="Usuário ou senha inválidos")
+
+
+@auth_.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for("user_.index"))
