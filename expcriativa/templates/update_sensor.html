@@ -1,0 +1,35 @@
+<!--register_sensor.html -->
+{% extends"base.html" %}
+{% block content%} 
+<div class="vertical-center">
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-body">
+                    {%for sensor in sensor%}
+                        <form action = "http://localhost:8080/update_sensor" method = "post">
+                            <p>id:</p>
+                            <p><input type = "text" name = "id" value= "{{sensor.id}}" readonly/></p>
+                            <p>Nome:</p>
+                            <p><input type = "text" name = "name" value= "{{sensor.name}}" required/></p>
+                            <p>Marca:</p>
+                            <p><input type = "text" name = "brand" value='{{sensor.brand}}' required/></p>
+                            <p>Modelo:</p>
+                            <p><input type = "text" name = "model" value='{{sensor.model}}' required/></p>
+                            <p>Unidade de Medida:</p>
+                            <p><input type = "text" name = "unit" value='{{sensor.unit}}' required/></p>
+                            <p>Tópico MQTT:</p>
+                            <p><input type = "text" name = "topic" value='{{sensor.topic}}' required/></p>
+                            <div>
+                                <input type="checkbox" id="is_active" name="is_active" checked />
+                                <label for="is_active">Ativo?</label>
+                            </div>
+                    {%endfor%}
+                        <p><input type = "submit" value = "Alterar" /></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock%}

@@ -25,7 +25,7 @@ def register_user():
 @user_.route('/list_users')
 @role_required('admin')
 def list_user():
-    users = User.query.all()
+    users = User.query.all()  # lista de objetos User
     return render_template("user.html", users=users)
 
 
