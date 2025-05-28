@@ -44,9 +44,9 @@ def edit_user(user_id):
             user.set_senha(nova_senha)
 
         db.session.commit()
-        return redirect(url_for('/list_users'))
+        return redirect(url_for('user_.list_user'))
 
-    return render_template("user/edit_user.html", user=user)
+    return render_template("edit_user.html", user=user)
 
 @user_.route('/delete_user/<int:user_id>', methods=["POST"])
 @role_required('admin')
@@ -54,6 +54,7 @@ def delete_user(user_id):
     user = User.query.get_or_404(user_id)
     db.session.delete(user)
     db.session.commit()
-    return redirect(url_for('/list_users'))
+    return redirect(url_for('user_.list_user'))
+
 
 

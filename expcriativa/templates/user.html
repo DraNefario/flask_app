@@ -10,13 +10,19 @@
     <div class="login-card">
         <ul>
             {% for user in users %}
-                <li>{{ user.username }} - senha: {{ user.password }}</li>
+                <li>
+                    {{ user.username }} - senha: {{ user.password }} <br>
+                    <a href="{{ url_for('user_.edit_user', user_id=user.id) }}">Editar</a> |
+                    <form action="{{ url_for('user_.delete_user', user_id=user.id) }}" method="post" style="display:inline;">
+                        <button type="submit" onclick="return confirm('Tem certeza que deseja deletar este usuário?');">Deletar</button>
+                    </form>
+                </li>
             {% else %}
                 <li>Nenhum usuário encontrado.</li>
             {% endfor %}
         </ul>
     </div>
-    <a href="/home">Voltar ao Início</a><br>
-    <a href="/register_user">Cadastrar Novo Usuário</a>
+    <a href="{{ url_for('user_.home') }}">Voltar ao Início</a><br>
+    <a href="{{ url_for('user_.register_user') }}">Cadastrar Novo Usuário</a>
 </body>
 </html>
