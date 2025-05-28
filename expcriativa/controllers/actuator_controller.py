@@ -22,12 +22,12 @@ def add_actuator():
 
     Actuator.save_actuator(name, brand, model, topic, unit, is_active )
 
-    actuators = Actuator.get_actuator()
+    actuators = Actuator.get_actuators()
     return render_template("atuadores.html", actuators = actuators)
 
 @actuator_.route('/list_actuators')
 def actuators():
-    actuators = Actuator.get_actuator()
+    actuators = Actuator.get_actuators()
     return render_template("atuadores.html", actuators = actuators)
 
 @actuator_.route('/edit_actuator')
