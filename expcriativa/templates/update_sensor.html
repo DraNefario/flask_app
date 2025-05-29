@@ -1,9 +1,9 @@
-<!--register_sensor.html -->
+<!--update_sensor.html -->
 {% extends"base.html" %}
 {% block content%} 
 <div class="vertical-center">
-    <div class="container">
-        <div class="card">
+    <div class="container-update">
+        <div class="card-update">
             <div class="card-header">
                 <div class="card-body">
                     {%for sensor in sensor%}
@@ -26,6 +26,9 @@
                             </div>
                     {%endfor%}
                         <p><input type = "submit" value = "Alterar" /></p>
+                    </form>
+                    <form action="http://localhost:8080/list_sensors">
+                            <input type="submit" value="voltar">
                     </form>
                 </div>
             </div>

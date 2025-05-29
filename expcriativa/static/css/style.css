@@ -1,3 +1,9 @@
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 /* Reset e estilo base */
 body {
     margin: 0;
@@ -223,4 +229,77 @@ header nav a:hover {
     align-self: flex-start;
     margin-left: 20px; /* Ajuste conforme o quão "esquerda" você quiser */
 }
+
+/*update*/
+.card-update {
+    width: 280px;
+    height: 650px;
+    background-color: #d9d9d9;
+    color: black;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 18px;
+    transition: transform 0.2sease;
+    cursor: pointer;
+}
+
+
+.container-update{
+    display: flex;
+    justify-content: center;
+}
+
+
+.edit-user{
+    width: 280px;
+    padding: 15px;
+    background-color: #d9d9d9;
+    color: black;
+    border-radius: 30px;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    font-size: 18px;
+    cursor: pointer;
+}
+.edit-user-a{
+    color: #fff;
+}
+
+/*tempo real*/
+
+.container-tr{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+}
+
+.row{
+    display: flex;
+    justify-content: space-between;
+}
+
+.col-md-6{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 200px;
+}
+
+.col-md-7{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.img-tr{
+    width: 100px;
+}
+
+
+
 
