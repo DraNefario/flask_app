@@ -7,6 +7,79 @@ body {
     /*color: #fff;*/
 }
 
+header {
+    background-color: #2c3a25;  /* cor de fundo combinando com o tema */
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+header p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+header nav a {
+    color: #cfdc99;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+header nav a:hover {
+    background-color: #455c38;
+    color: white;
+}
+
+.user-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* garante alinhamento à esquerda */
+    gap: 8px;
+}
+
+.roles-and-logout {
+    display: flex;
+    align-items: center;
+    gap: 16px; /* Espaço entre papéis e botão */
+    font-style: italic;
+    font-size: 14px;
+    color: #b8c096;
+}
+
+.logout-button {
+    color: #cfdc99;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    background-color: transparent;
+}
+
+.logout-button:hover {
+    background-color: #455c38;
+    color: white;
+}
+
+.roles {
+    display: flex;
+    gap: 10px;
+    margin-left: 30px;
+    font-size: 14px;
+    font-style: italic;
+    color: #b8c096;
+}
+
+
 /* Layout geral com sidebar + conteúdo */
 .layout {
     display: flex;
@@ -43,8 +116,9 @@ body {
 
 /* Botão de voltar fixo no canto inferior */
 .back-button {
-    margin-top: auto;
-    margin-bottom: 10px;
+    position: relative;
+    top: -50px;    /* sobe 20px */
+    left: -50;   /* afasta 10px da esquerda */
     text-decoration: none;
     color: white;
     font-size: 14px;
@@ -149,3 +223,4 @@ body {
     align-self: flex-start;
     margin-left: 20px; /* Ajuste conforme o quão "esquerda" você quiser */
 }
+
