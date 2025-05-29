@@ -89,19 +89,17 @@ header nav a:hover {
 /* Layout geral com sidebar + conteúdo */
 .layout {
     display: flex;
-    height: 100vh;
+    height: 50vh;
     width: 100%;
 }
 
 /* Sidebar lateral esquerda */
 .sidebar {
-    width: 180px;
-    background-color: #3e4c32;
+    width: 100vw;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: row;
     padding: 20px 0;
+    justify-content: space-between;
 }
 
 .sidebar a {
@@ -122,15 +120,7 @@ header nav a:hover {
 
 /* Botão de voltar fixo no canto inferior */
 .back-button {
-    position: relative;
-    top: -50px;    /* sobe 20px */
-    left: -50;   /* afasta 10px da esquerda */
-    text-decoration: none;
-    color: white;
-    font-size: 14px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+ padding-right: 20px;
 }
 
 .back-button img {
@@ -276,6 +266,7 @@ header nav a:hover {
     flex-direction: column;
     align-items: center;
     width: 500px;
+    color: #fff;
 }
 
 .row{
@@ -299,6 +290,8 @@ header nav a:hover {
 .img-tr{
     width: 100px;
 }
+
+
 
 
 

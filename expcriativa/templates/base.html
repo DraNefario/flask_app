@@ -37,6 +37,17 @@
 
 
     <main>
+        <div class="sidebar">
+            <a href="/home" class="home-icon-wrapper">
+                <img src="{{ url_for('static', filename='img/icon-home.png') }}" class="sidebar-icon">
+                <label>Home</label>
+            </a>
+            
+            <a href="javascript:history.back()" class="back-button">
+                <img src="{{ url_for('static', filename='img/voltar.png') }}" class="sidebar-icon">
+                <label>Back</label>
+            </a>
+    </div>
         {% block content %}{% endblock %}
     </main>
 

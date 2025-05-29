@@ -6,59 +6,85 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/listar_sensor.css') }}">
 </head>
 <body>
-<main>
-    <h1 class="titulo">Sensores Cadastrados</h1>
+            <header class="main-header">
+        {% if current_user.is_authenticated %}
+            <div class="user-info-wrapper">
+                <p>Olá, <strong>{{ current_user.username }}</strong>!</p>
 
-    <div class="login-card">
-        {% if sensors|length > 0 %}
-            <table class="table table-striped table-bordered" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Marca</th>
-                        <th>Modelo</th>
-                        <th>Tópico</th>
-                        <th>Unidade</th>
-                        <th>Ativo?</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for sensor in sensors %}
-                        <tr>
-                            <td>{{ sensor.name }}</td>
-                            <td>{{ sensor.brand }}</td>
-                            <td>{{ sensor.model }}</td>
-                            <td>{{ sensor.topic }}</td> 
-                            <td>{{ sensor.unit }}</td>
-                            <td>
-                                {% if sensor.is_active %}
-                                    Ativo
-                                {% else %}
-                                    Desativado
-                                {% endif %}
-                            </td>
-                            <td>
-                                <a href="http://localhost:8080/edit_sensor?id={{ sensor.id }}">Editar</a>
-                                <a href="http://localhost:8080/del_sensor?id={{ sensor.id }}">Deletar</a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                <div class="roles-and-logout">
+                    {% if current_user.has_role('admin') %}
+                        <span>Admin</span>
+                    {% endif %}
+                    {% if current_user.has_role('estatistico') %}
+                        <span>Estatístico</span>
+                    {% endif %}
+                    {% if current_user.has_role('operador') %}
+                        <span>Operador</span>
+                    {% endif %}
+
+                    <a class="logout-button" href="{{ url_for('auth.logout') }}">Sair</a>
+                </div>
+            </div>
         {% else %}
-            <p>Ainda não há sensores registrados!</p>
+            <nav>
+                <a href="{{ url_for('user_.login') }}">Login</a>
+            </nav>
         {% endif %}
-    </div>
+    </header>
 
-    <nav>
-            <form action="http://localhost:8080/register_sensor" style="display: inline;">
-                <input type="submit" value="Cadastrar Novo Sensor" />
-            </form>
-            <form action="http://localhost:8080/home" style="display: inline;">
-                <input type="submit" value="Voltar ao Início" />
-            </form>
-        </nav>
+    <main>
+        <h1 class="titulo">Sensores Cadastrados</h1>
+
+        <div class="login-card">
+            {% if sensors|length > 0 %}
+                <table class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>Tópico</th>
+                            <th>Unidade</th>
+                            <th>Ativo?</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for sensor in sensors %}
+                            <tr>
+                                <td>{{ sensor.name }}</td>
+                                <td>{{ sensor.brand }}</td>
+                                <td>{{ sensor.model }}</td>
+                                <td>{{ sensor.topic }}</td> 
+                                <td>{{ sensor.unit }}</td>
+                                <td>
+                                    {% if sensor.is_active %}
+                                        Ativo
+                                    {% else %}
+                                        Desativado
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a href="http://localhost:8080/edit_sensor?id={{ sensor.id }}">Editar</a>
+                                    <a href="http://localhost:8080/del_sensor?id={{ sensor.id }}">Deletar</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>Ainda não há sensores registrados!</p>
+            {% endif %}
+        </div>
+
+            <nav>
+                <form action="http://localhost:8080/register_sensor" style="display: inline;">
+                    <input type="submit" value="Cadastrar Novo Sensor" />
+                </form>
+                <form action="http://localhost:8080/home" style="display: inline;">
+                    <input type="submit" value="Voltar ao Início" />
+                </form>
+            </nav>
     </main>
 </body>
 </html>

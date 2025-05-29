@@ -5,22 +5,51 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/register_atuador.css') }}">
     </head>
     <body>
-        <div class="login-card">
-            <h3 class="form-title">Cadastrar Atuador</h3>
-            <form action="{{ url_for('Actuator_.add_actuator') }}" method="post">
-                <input type="text" name="name" placeholder="Nome do Atuador" required />
-                <input type="text" name="brand" placeholder="Marca do Atuador" required />
-                <input type="text" name="model" placeholder="Modelo do Atuador" required />
-                <input type="number" name="unit" placeholder="Unidades" required />
-                <input type="text" name="topic" placeholder="Topico MQTT" required />
-                <div>
-                        <input type="checkbox" id="is_active" name="is_active" checked />
-                        <label for="is_active">Ativo?</label>
+        <header class="main-header">
+            {% if current_user.is_authenticated %}
+                <div class="user-info-wrapper">
+                    <p>Olá, <strong>{{ current_user.username }}</strong>!</p>
+
+                    <div class="roles-and-logout">
+                        {% if current_user.has_role('admin') %}
+                            <span>Admin</span>
+                        {% endif %}
+                        {% if current_user.has_role('estatistico') %}
+                            <span>Estatístico</span>
+                        {% endif %}
+                        {% if current_user.has_role('operador') %}
+                            <span>Operador</span>
+                        {% endif %}
+
+                        <a class="logout-button" href="{{ url_for('auth.logout') }}">Sair</a>
                     </div>
-                <button type="submit">Cadastrar Atuador</button>
-                <a href="/home">Voltar ao Início</a>
-            </form> 
-        </div>
-        <a href="/home">Voltar ao Início</a>
+                </div>
+            {% else %}
+                <nav>
+                    <a href="{{ url_for('user_.login') }}">Login</a>
+                </nav>
+            {% endif %}
+        </header>
+
+
+        <main>
+            <div class="login-card">
+                <h3 class="form-title">Cadastrar Atuador</h3>
+                <form action="{{ url_for('Actuator_.add_actuator') }}" method="post">
+                    <input type="text" name="name" placeholder="Nome do Atuador" required />
+                    <input type="text" name="brand" placeholder="Marca do Atuador" required />
+                    <input type="text" name="model" placeholder="Modelo do Atuador" required />
+                    <input type="number" name="unit" placeholder="Unidades" required />
+                    <input type="text" name="topic" placeholder="Topico MQTT" required />
+                    <div>
+                            <input type="checkbox" id="is_active" name="is_active" checked />
+                            <label for="is_active">Ativo?</label>
+                        </div>
+                    <button type="submit">Cadastrar Atuador</button>
+                    <a href="/home">Voltar ao Início</a>
+                </form> 
+            </div>
+            <a href="/home">Voltar ao Início</a>
+        </main>
     </body>
 </html>

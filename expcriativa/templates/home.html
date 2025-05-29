@@ -4,6 +4,7 @@
 
 {% block content %}
 <div class="layout">
+    <!--
     <div class="sidebar">
         <a href="/home" class="home-icon-wrapper">
             <img src="{{ url_for('static', filename='img/icon-home.png') }}" class="sidebar-icon">
@@ -15,6 +16,7 @@
             <label>Back</label>
         </a>
     </div>
+-->
     <div class="main-content">
         {% if current_user.has_role('operador') or current_user.has_role('admin') %}
         <a href="/publish" class="card-link">

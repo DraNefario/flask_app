@@ -5,6 +5,31 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/delete_user.css') }}">
 </head>
 <body>
+            <header class="main-header">
+        {% if current_user.is_authenticated %}
+            <div class="user-info-wrapper">
+                <p>Olá, <strong>{{ current_user.username }}</strong>!</p>
+
+                <div class="roles-and-logout">
+                    {% if current_user.has_role('admin') %}
+                        <span>Admin</span>
+                    {% endif %}
+                    {% if current_user.has_role('estatistico') %}
+                        <span>Estatístico</span>
+                    {% endif %}
+                    {% if current_user.has_role('operador') %}
+                        <span>Operador</span>
+                    {% endif %}
+
+                    <a class="logout-button" href="{{ url_for('auth.logout') }}">Sair</a>
+                </div>
+            </div>
+        {% else %}
+            <nav>
+                <a href="{{ url_for('user_.login') }}">Login</a>
+            </nav>
+        {% endif %}
+    </header>
     <h2>Deletar Usuário</h2>
     <div class="delete-card">
         <form action="http://localhost:8080/del_user" method="post">
