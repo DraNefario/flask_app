@@ -13,6 +13,10 @@ from controllers.user_controller import user_
 from flask_mqtt import Mqtt
 import json
 
+temperature = None
+huminity = None
+
+
 def create_app():
     app = Flask(__name__, 
                 template_folder="./templates/", 
@@ -51,7 +55,7 @@ def create_app():
     app.config['MQTT_BROKER_PORT'] = 1883
     app.config['MQTT_USERNAME'] = 'thomas'  # Set this item when you need to verify username and password
     app.config['MQTT_PASSWORD'] = ''  # Set this item when you need to verify username and password
-    app.config['MQTT_KEEPALIVE'] = 5000  # Set KeepAlive time in seconds
+    app.config['MQTT_KEEPALIVE'] = 60  # Set KeepAlive time in seconds
     app.config['MQTT_TLS_ENABLED'] = False  # If your broker supports TLS, set it True
 
     mqtt_client= Mqtt()
