@@ -53,15 +53,15 @@ def create_app():
     
     app.config['MQTT_BROKER_URL'] = 'broker.emqx.io'
     app.config['MQTT_BROKER_PORT'] = 1883
-    app.config['MQTT_USERNAME'] = 'thomas'  # Set this item when you need to verify username and password
-    app.config['MQTT_PASSWORD'] = ''  # Set this item when you need to verify username and password
-    app.config['MQTT_KEEPALIVE'] = 60  # Set KeepAlive time in seconds
-    app.config['MQTT_TLS_ENABLED'] = False  # If your broker supports TLS, set it True
+    app.config['MQTT_USERNAME'] = 'SistemaIrrigacaoAutomatica'  
+    app.config['MQTT_PASSWORD'] = ''  
+    app.config['MQTT_KEEPALIVE'] = 60 
+    app.config['MQTT_TLS_ENABLED'] = False  
 
     mqtt_client= Mqtt()
     mqtt_client.init_app(app)
 
-    topic_subscribe = "/thomas/"
+    topic_subscribe = "/irrigar/"
 
     @app.route('/tr')
     def tempo_real():
@@ -74,7 +74,7 @@ def create_app():
     def handle_connect(client, userdata, flags, rc):
         if rc == 0:
             print('Broker Connected successfully')
-            mqtt_client.subscribe(topic_subscribe) # subscribe topic
+            mqtt_client.subscribe(topic_subscribe) 
         else:
             print('Bad connection. Code:', rc)
 
