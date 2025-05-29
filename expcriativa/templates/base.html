@@ -7,29 +7,34 @@
     {% block head_extra %}{% endblock %}
 </head>
 <body>
-    <header>
+    <header class="main-header">
         {% if current_user.is_authenticated %}
-            <p>Olá, {{ current_user.username }}!</p>
-            <a href="{{ url_for('auth.logout') }}">Sair</a>
+            <div class="user-info-wrapper">
+                <p>Olá, <strong>{{ current_user.username }}</strong>!</p>
+
+                <div class="roles-and-logout">
+                    {% if current_user.has_role('admin') %}
+                        <span>Admin</span>
+                    {% endif %}
+                    {% if current_user.has_role('estatistico') %}
+                        <span>Estatístico</span>
+                    {% endif %}
+                    {% if current_user.has_role('operador') %}
+                        <span>Operador</span>
+                    {% endif %}
+
+                    <a class="logout-button" href="{{ url_for('auth.logout') }}">Sair</a>
+                </div>
+            </div>
         {% else %}
-            <a href="{{ url_for('user_.login') }}">Login</a>
-        {% endif %}
-
-        {% if current_user.is_authenticated %}
-            {% if current_user.has_role('admin') %}
-                <a>admin</a>
-            {% endif %}
-
-            {% if current_user.has_role('estatistico') %}
-                <a>Estatístico</a>
-            {% endif %}
-
-            {% if current_user.has_role('operador') %}
-                <a>Operador</a>
-            {% endif %}
-            
+            <nav>
+                <a href="{{ url_for('user_.login') }}">Login</a>
+            </nav>
         {% endif %}
     </header>
+
+
+
 
     <main>
         {% block content %}{% endblock %}
@@ -40,3 +45,4 @@
     {% endblock %}
 </body>
 </html>
+
