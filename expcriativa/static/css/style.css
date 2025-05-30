@@ -242,22 +242,70 @@ header nav a:hover {
     justify-content: center;
 }
 
+/*pagina de editar aquela lista la */
+.edit-user {
+    width: 100%;
+    max-width: 360px; 
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f3f3f3;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    color: #333;
+}
 
-.edit-user{
-    width: 280px;
-    padding: 15px;
-    background-color: #d9d9d9;
-    color: black;
-    border-radius: 30px;
-    display: flex;
+.edit-user-a {
     text-align: center;
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.edit-user form {
+    display: flex;
     flex-direction: column;
-    font-size: 18px;
+}
+
+.edit-user label {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #444;
+}
+
+.edit-user input[type="text"],
+.edit-user input[type="email"],
+.edit-user input[type="password"] {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+/* Botão */
+.edit-user button[type="submit"],
+.edit-user input[type="submit"] {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #455c38; 
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: fit-content;
+    align-self: center;
 }
-.edit-user-a{
-    color: #fff;
+
+.edit-user button[type="submit"]:hover,
+.edit-user input[type="submit"]:hover {
+    background-color: #388e3c; 
 }
+
 
 /*tempo real*/
 
