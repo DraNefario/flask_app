@@ -4,6 +4,7 @@ from flask_login import LoginManager
 from models.db import *
 from models.user.user import User
 from models.iot.read import Read
+from models.iot.write import Write
 
 from controllers.sensor_controller import sensor_
 from controllers.actuator_controller import actuator_
@@ -68,6 +69,21 @@ def create_app():
         global temperature, huminity
         values = {"temperature":temperature, "huminity":huminity}
         return render_template("tr.html", values=values)
+    
+    @app.route('/publish')
+    def publish():
+        return render_template('publish.html')
+
+    @app.route('/publish_message', methods=['GET','POST'])
+    def publish_message():
+        request_data = request.get_json()
+        publish_result = mqtt_client.publish(request_data['topic'], request_data['message'])
+        try:
+            with app.app_context():
+                Write.save_write(request_data['topic'],float(request_data['message']))
+        except:
+            pass
+        return jsonify(publish_result)
 
 
     @mqtt_client.on_connect()

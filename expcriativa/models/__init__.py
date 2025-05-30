@@ -4,3 +4,5 @@ from models.iot.devices import Device
 from models.iot.sensors import Sensor
 from models.iot.actuators import Actuator
 from models.user.user import User
+from models.iot.read import Read
+from models.iot.write import Write

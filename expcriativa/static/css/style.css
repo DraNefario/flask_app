@@ -242,6 +242,7 @@ header nav a:hover {
     justify-content: center;
 }
 
+
 /*pagina de editar aquela lista la */
 .edit-user {
     width: 100%;
@@ -306,7 +307,6 @@ header nav a:hover {
     background-color: #388e3c; 
 }
 
-
 /*tempo real*/
 
 .container-tr{
@@ -339,8 +339,161 @@ header nav a:hover {
     width: 100px;
 }
 
+/*publish*/
+.container-publish {
+    width: 100%;
+    max-width: 600px;
+    padding: 15px;
+    background-color: #d9d9d9;
+    color: black;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 0 auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.switch_container {
+    margin: 30px auto;
+    width: 120px;
+}
+
+.switch {
+    visibility: hidden;
+    position: absolute;
+    margin-left: -9999px;
+}
+
+.switch + label {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+}
+
+/* SHADOW STYLE */
+.switch--shadow + label {
+    padding: 2px;
+    width: 60px;
+    height: 30px;
+    background-color: #dddddd;
+    border-radius: 60px;
+}
+.switch--shadow + label:before,
+.switch--shadow + label:after {
+    display: block;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    bottom: 1px;
+    content: "";
+}
+.switch--shadow + label:before {
+    right: 1px;
+    background-color: #f1f1f1;
+    border-radius: 60px;
+    transition: background 0.4s;
+}
+.switch--shadow + label:after {
+    width: 30px;
+    background-color: #fff;
+    border-radius: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s;
+}
+.switch--shadow:checked + label:before {
+    background-color: #8ce196;
+}
+.switch--shadow:checked + label:after {
+    transform: translateX(30px);
+}
+
+/* FLAT STYLE */
+.switch--flat + label {
+    padding: 2px;
+    width: 60px;
+    height: 30px;
+    background-color: #dddddd;
+    border-radius: 60px;
+    transition: background 0.4s;
+}
+.switch--flat + label:before,
+.switch--flat + label:after {
+    display: block;
+    position: absolute;
+    content: "";
+}
+.switch--flat + label:before {
+    top: 1px;
+    left: 1px;
+    bottom: 1px;
+    right: 1px;
+    background-color: #fff;
+    border-radius: 60px;
+    transition: background 0.4s;
+}
+.switch--flat + label:after {
+    top: 2px;
+    left: 2px;
+    bottom: 2px;
+    width: 28px;
+    background-color: #dddddd;
+    border-radius: 52px;
+    transition: margin 0.4s, background 0.4s;
+}
+.switch--flat:checked + label {
+    background-color: #8ce196;
+}
+.switch--flat:checked + label:after {
+    margin-left: 30px; /* corrigido de 60px para 30px */
+    background-color: #8ce196;
+}
+
+/* INPUTS */
+.form-control {
+    width: 100%;
+    max-width: 500px;
+    padding: 12px 15px;
+    font-size: 16px;
+    border-radius: 15px; /* mais arredondado */
+    border: 1px solid #ccc;
+    margin-bottom: 15px; /* espaçamento entre os campos */
+    box-sizing: border-box;
+    background-color: #fff;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    border-color: #8ce196;
+    outline: none;
+    box-shadow: 0 0 5px rgba(140, 225, 150, 0.5);
+}
 
 
+/* BOTÃO */
+.btn-primary {
+    background-color: #3d793f;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
 
+.btn-primary:hover {
+    background-color: #3c713f;
+}
 
+/* TEXTO DE RESPOSTA */
+#pubResponse {
+    font-weight: bold;
+    color: #4caf50;
+    margin-top: 15px;
+}
 
