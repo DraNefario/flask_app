@@ -1,38 +1,43 @@
-<!--update_sensor.html -->
-{% extends"base.html" %}
-{% block content%} 
+<!-- update_sensor.html -->
+{% extends "base.html" %}
+{% block content %}
 <div class="vertical-center">
     <div class="container-update">
-        <div class="card-update">
-            <div class="card-header">
-                <div class="card-body">
-                    {%for sensor in sensor%}
-                        <form action = "http://localhost:8080/update_sensor" method = "post">
-                            <p>id:</p>
-                            <p><input type = "text" name = "id" value= "{{sensor.id}}" readonly/></p>
-                            <p>Nome:</p>
-                            <p><input type = "text" name = "name" value= "{{sensor.name}}" required/></p>
-                            <p>Marca:</p>
-                            <p><input type = "text" name = "brand" value='{{sensor.brand}}' required/></p>
-                            <p>Modelo:</p>
-                            <p><input type = "text" name = "model" value='{{sensor.model}}' required/></p>
-                            <p>Unidade de Medida:</p>
-                            <p><input type = "text" name = "unit" value='{{sensor.unit}}' required/></p>
-                            <p>Tópico MQTT:</p>
-                            <p><input type = "text" name = "topic" value='{{sensor.topic}}' required/></p>
-                            <div>
-                                <input type="checkbox" id="is_active" name="is_active" checked />
-                                <label for="is_active">Ativo?</label>
-                            </div>
-                    {%endfor%}
-                        <p><input type = "submit" value = "Alterar" /></p>
-                    </form>
-                    <form action="http://localhost:8080/list_sensors">
-                            <input type="submit" value="voltar">
-                    </form>
-                </div>
-            </div>
+        <div class="edit-user">
+            <h2 class="edit-user-a">Atualizar Sensor</h2>
+            {% for sensor in sensor %}
+                <form action="http://localhost:8080/update_sensor" method="post">
+                    <label for="id">ID:</label>
+                    <input type="text" id="id" name="id" value="{{ sensor.id }}" readonly />
+
+                    <label for="name">Nome:</label>
+                    <input type="text" id="name" name="name" value="{{ sensor.name }}" required />
+
+                    <label for="brand">Marca:</label>
+                    <input type="text" id="brand" name="brand" value="{{ sensor.brand }}" required />
+
+                    <label for="model">Modelo:</label>
+                    <input type="text" id="model" name="model" value="{{ sensor.model }}" required />
+
+                    <label for="unit">Unidade de Medida:</label>
+                    <input type="text" id="unit" name="unit" value="{{ sensor.unit }}" required />
+
+                    <label for="topic">Tópico MQTT:</label>
+                    <input type="text" id="topic" name="topic" value="{{ sensor.topic }}" required />
+
+                    <div>
+                        <input type="checkbox" id="is_active" name="is_active" checked />
+                        <label for="is_active">Ativo?</label>
+                    </div>
+
+                    <input type="submit" value="Alterar" />
+                </form>
+            {% endfor %}
+
+            <form action="http://localhost:8080/list_sensors">
+                <input type="submit" value="Voltar" />
+            </form>
         </div>
     </div>
 </div>
-{% endblock%}
+{% endblock %}
