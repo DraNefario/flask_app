@@ -125,3 +125,95 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+.user-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.btn {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.user-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 5px;
+    align-items: center;
+}
+
+/* Impede quebra de linha e alinha como inline */
+.user-actions form {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Botões gerais */
+.btn {
+    padding: 4px 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+/* Botão editar */
+.edit-btn {
+    background-color: #4caf50;
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #388e3c;
+}
+
+/* Botão deletar */
+.delete-btn {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+.standard-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #455c38 !important;  /* Força fundo sólido */
+    color: white !important;               /* Força texto branco */
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: fit-content;
+    align-self: center;
+    display: inline-block;
+    text-align: center;
+}
+
+.standard-btn:hover {
+    background-color: #388e3c !important;  /* Hover verde escuro sólido */
+}
+
