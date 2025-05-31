@@ -2,12 +2,6 @@
     box-sizing: border-box;
 }
 
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-  
 body {
     margin: 0;
     padding: 0;
@@ -27,55 +21,55 @@ header {
 }
 
 header p {
-      margin: 0;
-      font-size: 18px;
-      font-weight: 600;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 header nav a {
-      color: #cfdc99;
-      margin-left: 20px;
-      text-decoration: none;
-      font-weight: 500;
-      padding: 6px 12px;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
+    color: #cfdc99;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
 header nav a:hover {
-      background-color: #455c38;
-      color: white;
+    background-color: #455c38;
+    color: white;
 }
 
 .user-info-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start; /* garante alinhamento à esquerda */
-      gap: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* garante alinhamento à esquerda */
+    gap: 8px;
 }
 
 .roles-and-logout {
-      display: flex;
-      align-items: center;
-      gap: 16px; /* Espaço entre papéis e botão */
-      font-style: italic;
-      font-size: 14px;
-      color: #b8c096;
+    display: flex;
+    align-items: center;
+    gap: 16px; /* Espaço entre papéis e botão */
+    font-style: italic;
+    font-size: 14px;
+    color: #b8c096;
 }
 
 .logout-button {
-      color: #cfdc99;
-      text-decoration: none;
-      font-weight: 500;
-      padding: 6px 12px;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-      background-color: transparent;
+    color: #cfdc99;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    background-color: transparent;
 }
 
 .logout-button:hover {
-      background-color: #455c38;
-      color: white;
+    background-color: #455c38;
+    color: white;
 }
 
 .roles {
@@ -85,6 +79,12 @@ header nav a:hover {
     font-size: 14px;
     font-style: italic;
     color: #b8c096;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .titulo {
@@ -98,11 +98,82 @@ header nav a:hover {
     background-color: #c8ccc0;
     border-radius: 40px;
     padding: 40px;
-    width: 500px;
+    width: 900px;  /* mais largo */
+    padding: 60px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 20px;
+}
+
+/* Faz a tabela ocupar toda a largura do container e com fundo e borda arredondada */
+table {
+    width: 100%;
+    border-collapse: collapse; /* bordas colapsadas para visual unificado */
+    border-radius: 20px; /* borda arredondada da tabela */
+    overflow: hidden; /* para bordas arredondadas funcionarem */
+    box-shadow: 0 0 8px rgba(0,0,0,0.15);
+    background-color: #e5e8d9; /* fundo do "quadrado" da tabela */
+}
+
+/* Cabeçalho */
+thead th {
+    background-color: #455c38;
+    color: white;
+    font-weight: 600;
+    padding: 14px 24px;
+    text-align: left;
+    border-bottom: 3px solid #3e4c32;
+}
+
+/* Linhas e células */
+tbody td {
+    padding: 14px 24px;
+    background-color: transparent; /* transparente para o fundo do table aparecer */
+    border-bottom: 1px solid #c8ccc0;
+}
+
+/* Última linha sem borda inferior */
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Links dentro da tabela */
+tbody td a {
+    margin-right: 20px;
+    color: #2c3a25;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+tbody td a:hover {
+    color: #455c38;
+    text-decoration: underline;
+}
+
+
+/* Para os formulários dos botões abaixo da tabela */
+nav form {
+    display: inline;
+    margin-right: 15px;
+}
+
+nav input[type="submit"] {
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 22px;
+    border-radius: 8px;
+    border: none;
+    background-color: #455c38;
+    color: white;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+nav input[type="submit"]:hover {
+    background-color: #5a7249;
 }
 
 ul {
