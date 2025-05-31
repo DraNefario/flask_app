@@ -39,19 +39,23 @@
             <ul>
                 {% for user in users %}
                     <li>
-                        {{ user.username }} - senha: {{ user.password }} <br>
-                        <a href="{{ url_for('user_.edit_user', user_id=user.id) }}">Editar</a> |
-                        <form action="{{ url_for('user_.delete_user', user_id=user.id) }}" method="post" style="display:inline;">
-                            <button type="submit" onclick="return confirm('Tem certeza que deseja deletar este usuário?');">Deletar</button>
-                        </form>
+                        {{ user.username }} - senha: {{ user.password }}
+                        <div class="user-actions">
+                            <a href="{{ url_for('user_.edit_user', user_id=user.id) }}" class="btn edit-btn">Editar</a>
+                            <form action="{{ url_for('user_.delete_user', user_id=user.id) }}" method="post" onsubmit="return confirm('Tem certeza que deseja deletar este usuário?');">
+                                <button type="submit" class="btn delete-btn">Deletar</button>
+                            </form>
+                        </div>
                     </li>
                 {% else %}
                     <li>Nenhum usuário encontrado.</li>
                 {% endfor %}
             </ul>
         </div>
-        <a href="{{ url_for('user_.home') }}">Voltar ao Início</a><br>
-        <a href="{{ url_for('user_.register_user') }}">Cadastrar Novo Usuário</a>
+        <div class="btn-container">
+            <a href="{{ url_for('user_.home') }}" class="standard-btn">Voltar ao Início</a>
+            <a href="{{ url_for('user_.register_user') }}" class="standard-btn">Cadastrar Novo Usuário</a>
+        </div>
     </main>
 </body>
 </html>
