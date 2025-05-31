@@ -33,6 +33,8 @@
 
 
         <main>
+            <h2 class="titulo">Cadastrar Novo Dispositivo</h2>
+            
             <div class="login-card">
                 <h3 class="form-title">Cadastrar Atuador</h3>
                 <form action="{{ url_for('Actuator_.add_actuator') }}" method="post">
@@ -42,14 +44,15 @@
                     <input type="number" name="unit" placeholder="Unidades" required />
                     <input type="text" name="topic" placeholder="Topico MQTT" required />
                     <div>
-                            <input type="checkbox" id="is_active" name="is_active" checked />
-                            <label for="is_active">Ativo?</label>
-                        </div>
-                    <button type="submit">Cadastrar Atuador</button>
-                    <a href="/home">Voltar ao Início</a>
+                        <input type="checkbox" id="is_active" name="is_active" checked />
+                        <label for="is_active">Ativo?</label>
+                    </div>
+                    <div class="btn-wrapper">
+                        <button type="submit">Cadastrar Atuador</button>
+                        <a href="/home" class="btn-voltar">Voltar ao Início</a>
+                    </div>
                 </form> 
             </div>
-            <a href="/home">Voltar ao Início</a>
         </main>
     </body>
 </html>
