@@ -13,11 +13,11 @@
         <h3>Publicar Mensagem Manual</h3>
         <div class="form-group">
             <label for="topicInput">Tópico:</label>
-            <input type="text" id="topicInput" class="form-control" value="/aula_flask/">
+            <input type="text" id="topicInput" class="form-control" value="/irrigar/">
         </div>
         <div class="form-group">
             <label for="messageInput">Mensagem (JSON ou texto):</label>
-            <input type="text" id="messageInput" class="form-control" value='{"sensor": "/aula_flask/comando", "valor": "desligar_bomba"}'>
+            <input type="text" id="messageInput" class="form-control" value='{"sensor": "/irrigar/comando", "valor": "desligar_bomba"}'>
         </div>
         <button class="btn btn-primary" onclick="publishManual()">Publicar</button>
 

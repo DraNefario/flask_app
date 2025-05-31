@@ -10,6 +10,8 @@ from controllers.sensor_controller import sensor_
 from controllers.actuator_controller import actuator_
 from controllers.auth_controller import auth_
 from controllers.user_controller import user_
+from controllers.read_controller import read_
+from controllers.write_controller import write_
 
 from flask_mqtt import Mqtt
 import json
@@ -39,10 +41,12 @@ def create_app():
         return User.query.get(int(user_id))
 
     # Rotas e blueprints
-    app.register_blueprint(sensor_, url_prefix='/')
     app.register_blueprint(actuator_, url_prefix='/')
+    app.register_blueprint(sensor_, url_prefix='/')
     app.register_blueprint(auth_, url_prefix='/')
     app.register_blueprint(user_, url_prefix='/')
+    app.register_blueprint(read_, url_prefix='/')
+    app.register_blueprint(write_, url_prefix='/')
     
     @app.route('/')
     def index():
@@ -105,9 +109,9 @@ def create_app():
             global temperature, huminity
             #print(message.payload.decode())
             js = json.loads(message.payload.decode())
-            if(js["sensor"]=="/aula_flask/temperature"):
+            if(js["sensor"]=="/irrigar/temperature"):
                 temperature = js["valor"]
-            elif(js["sensor"]=="/aula_flask/huminity"):
+            elif(js["sensor"]=="/irrigar/huminity"):
                 huminity = js["valor"]
             try:
                 with app.app_context():
