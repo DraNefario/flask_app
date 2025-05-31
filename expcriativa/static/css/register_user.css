@@ -111,6 +111,7 @@ form {
 }
   
 input[type="text"],
+input[type="email"],
 input[type="password"] {
     width: 90%;
     padding: 15px;
@@ -137,4 +138,19 @@ button {
     border-radius: 15px;
     cursor: pointer;
 }
+
+.standard-btn {
+    padding: 10px 20px;
+    background-color: #455c38;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
   
