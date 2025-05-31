@@ -9,7 +9,7 @@ read_ = Blueprint("read",__name__, template_folder="views")
 def history_read():
     sensors = Sensor.get_sensors()
     read = {}
-    return render_template("tr.html", sensors = sensors, read = read)
+    return render_template("history_read.html", sensors = sensors, read = read)
 
 @read_.route("/get_read", methods=['POST'])
 def get_read():
