@@ -1,38 +1,43 @@
-<!--update_actuator.html -->
-{% extends"base.html" %}
-{% block content%} 
-<div class="vertical-center">
-    <div class="container-update">
-        <div class="card-update">
-            <div class="card-header">
-                <div class="card-body">
-                    {%for actuator in actuator%}
-                        <form action = "http://localhost:8080/update_actuator" method = "post">
-                            <p>id:</p>
-                            <p><input type = "text" name = "id" value= "{{actuator.id}}" readonly/></p>
-                            <p>Nome:</p>
-                            <p><input type = "text" name = "name" value= "{{actuator.name}}" required/></p>
-                            <p>Marca:</p>
-                            <p><input type = "text" name = "brand" value='{{actuator.brand}}' required/></p>
-                            <p>Modelo:</p>
-                            <p><input type = "text" name = "model" value='{{actuator.model}}' required/></p>
-                            <p>Unidade de Medida:</p>
-                            <p><input type = "text" name = "unit" value='{{actuator.unit}}' required/></p>
-                            <p>Tópico MQTT:</p>
-                            <p><input type = "text" name = "topic" value='{{actuator.topic}}' required/></p>
-                            <div>
-                                <input type="checkbox" id="is_active" name="is_active" checked />
-                                <label for="is_active">Ativo?</label>
-                            </div>
-                    {%endfor%}
-                        <p><input type = "submit" value = "Alterar" /></p>
-                    </form>
-                    <form action="http://localhost:8080/list_actuators">
-                            <input type="submit" value="voltar">
-                    </form>
-                </div>
+{% extends "base.html" %}
+{% block content %}
+<main>
+    
+
+    <div class="edit-user">
+        <h2 class="edit-user-a">Alterar Atuador</h2>
+        {% for actuator in actuator %}
+        <form action="http://localhost:8080/update_actuator" method="post">
+            <label for="id">ID:</label>
+            <input type="text" id="id" name="id" value="{{ actuator.id }}" readonly />
+
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" value="{{ actuator.name }}" required />
+
+            <label for="brand">Marca:</label>
+            <input type="text" id="brand" name="brand" value="{{ actuator.brand }}" required />
+
+            <label for="model">Modelo:</label>
+            <input type="text" id="model" name="model" value="{{ actuator.model }}" required />
+
+            <label for="unit">Unidade de Medida:</label>
+            <input type="text" id="unit" name="unit" value="{{ actuator.unit }}" required />
+
+            <label for="topic">Tópico MQTT:</label>
+            <input type="text" id="topic" name="topic" value="{{ actuator.topic }}" required />
+
+            <div>
+            <input type="checkbox" id="is_active" name="is_active" {% if actuator.is_active %}checked{% endif %} />
+            <label for="is_active">Ativo?</label>
             </div>
-        </div>
+
+            <input type="submit" value="Alterar" />
+        </form>
+        {% endfor %}
+        
+        <form action="http://localhost:8080/list_actuators">
+            <input type="submit" value="Voltar" />
+        </form>
     </div>
-</div>
-{% endblock%}
+
+</main>
+{% endblock %}
