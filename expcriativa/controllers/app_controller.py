@@ -66,7 +66,9 @@ def create_app():
     mqtt_client= Mqtt()
     mqtt_client.init_app(app)
 
-    topic_subscribe = "/irrigar/"
+    topic_subscribe = "/irrigar/sensor"  
+    topic_publish = "/irrigar/controle" 
+
 
     @app.route('/tr')
     def tempo_real():
@@ -81,13 +83,15 @@ def create_app():
     @app.route('/publish_message', methods=['GET','POST'])
     def publish_message():
         request_data = request.get_json()
-        publish_result = mqtt_client.publish(request_data['topic'], request_data['message'])
+        publish_result = mqtt_client.publish("/irrigar/controle", request_data['message'])
         try:
             with app.app_context():
-                Write.save_write(request_data['topic'],float(request_data['message']))
+                Write.save_write("/irrigar/controle", request_data['message'])  # sem float()
         except:
             pass
         return jsonify(publish_result)
+
+
 
 
     @mqtt_client.on_connect()

@@ -8,15 +8,32 @@ class Write(db.Model):
     id = db.Column('id', db.Integer, nullable = False, primary_key = True)
     write_datetime = db.Column(db.DateTime(), nullable = False)
     actuators_id = db.Column(db.Integer, db.ForeignKey(Actuator.id), nullable = False)
-    value = db.Column(db.Float, nullable = True)
+    value = db.Column(db.String(255), nullable=True)
+
+
 
     def save_write(topic, value):
+        print(f"save_write called with topic={topic}, value={value}")
         actuator = Actuator.query.filter(Actuator.topic == topic).first()
+        if actuator is None:
+            print("Actuator not found for topic:", topic)
+            return
         device = Device.query.filter(Device.id == actuator.devices_id).first()
-        if (actuator is not None) and (device.is_active == True):
-            write = Write(write_datetime = datetime.now(), actuators_id = actuator.id, Value = float(value) )
-            db.session.add(write)
-            db.session.commit()
+        if device is None:
+            print("Device not found for actuator's device id:", actuator.devices_id)
+            return
+        print(f"Found actuator id={actuator.id}, device is_active={device.is_active}")
+        if device.is_active:
+            try:
+                write = Write(write_datetime=datetime.now(), actuators_id=actuator.id, value=str(value))
+                db.session.add(write)
+                db.session.commit()
+                print("Write saved successfully")
+            except Exception as e:
+                print("Error saving write:", e)
+        else:
+            print("Device is not active, skipping write")
+
     
     def get_write(device_id, start, end):
         actuator = Actuator.query.filter(Actuator.devices_id == device_id).first()

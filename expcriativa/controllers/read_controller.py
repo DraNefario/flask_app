@@ -20,6 +20,6 @@ def get_read():
         read = Read.get_read(id, start, end)
 
         sensors = Sensor.get_sensors()
-        return render_template("tr.html", sensors = sensors, read = read)
+        return render_template("history_read.html", sensors = sensors, read = read)
 
 
