@@ -5,6 +5,7 @@ from models.db import *
 from models.user.user import User
 from models.iot.read import Read
 from models.iot.write import Write
+from utils.decorators import *
 
 from controllers.sensor_controller import sensor_
 from controllers.actuator_controller import actuator_
@@ -71,16 +72,19 @@ def create_app():
 
 
     @app.route('/tr')
+    @role_required('admin', 'estatistico')
     def tempo_real():
         global temperature, huminity
         values = {"temperature":temperature, "huminity":huminity}
         return render_template("tr.html", values=values)
     
     @app.route('/publish')
+    @role_required('admin', 'operador')
     def publish():
         return render_template('publish.html')
 
     @app.route('/publish_message', methods=['GET','POST'])
+    @role_required('admin', 'operador')
     def publish_message():
         request_data = request.get_json()
         publish_result = mqtt_client.publish("/irrigar/controle", request_data['message'])

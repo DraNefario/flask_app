@@ -7,11 +7,13 @@ from utils.decorators import *
 actuator_ = Blueprint("Actuator_", __name__, template_folder="templates")
 
 @actuator_.route('/register_atuador')
+@role_required('admin', 'operador', 'estatistico')
 def register_actuator():
     return render_template("register_atuador.html")
 
 
 @actuator_.route('/add_actuator', methods = ['POST'])
+@role_required('admin', 'operador', 'estatistico')
 def add_actuator():
     name = request.form.get("name")
     brand = request.form.get("brand")
@@ -26,17 +28,20 @@ def add_actuator():
     return render_template("atuadores.html", actuators = actuators)
 
 @actuator_.route('/list_actuators')
+@role_required('admin', 'operador', 'estatistico')
 def actuators():
     actuators = Actuator.get_actuators()
     return render_template("atuadores.html", actuators = actuators)
 
 @actuator_.route('/edit_actuator')
+@role_required('admin', 'operador', 'estatistico')
 def edit_actuator():
     id = request.args.get('id', None)
     actuator = Actuator.get_single_actuator(id)
     return render_template("update_actuator.html", actuator = actuator)
 
 @actuator_.route('/update_actuator', methods=['POST'])
+@role_required('admin', 'operador', 'estatistico')
 def update_actuator():
     id = request.form.get("id")
     name = request.form.get("name")
@@ -49,6 +54,7 @@ def update_actuator():
     return render_template("atuadores.html", actuator = actuator)
 
 @actuator_.route('/del_actuator', methods=['GET'])
+@role_required('admin', 'operador', 'estatistico')
 def del_actuator():
     id = request.args.get('id', None)
     actuator = Actuator.delete_actuator(id)

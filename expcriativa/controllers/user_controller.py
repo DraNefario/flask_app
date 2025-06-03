@@ -23,14 +23,14 @@ def register_user():
     return render_template("register_user.html")
 
 @user_.route('/list_users')
-@role_required('admin')
+@role_required('admin', 'operador', 'estatistico')
 def list_user():
     users = User.query.all()  # lista de objetos User
     return render_template("user.html", users=users)
 
 
 @user_.route('/edit_user/<int:user_id>', methods=["GET", "POST"])
-@role_required('admin')
+@role_required('admin', 'operador', 'estatistico')
 def edit_user(user_id):
     user = User.query.get_or_404(user_id)
     
@@ -49,7 +49,7 @@ def edit_user(user_id):
     return render_template("edit_user.html", user=user)
 
 @user_.route('/delete_user/<int:user_id>', methods=["POST"])
-@role_required('admin')
+@role_required('admin', 'operador', 'estatistico')
 def delete_user(user_id):
     user = User.query.get_or_404(user_id)
     db.session.delete(user)

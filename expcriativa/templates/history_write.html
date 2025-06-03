@@ -3,22 +3,26 @@
 {% block content%} 
 <div class="vertical-center">
     <div class="container">
-        <div class="card">
+        <div class="card-history">
             <div class="card-header">
                 <div class="card-body">
                     <form action="http://localhost:8080/get_write" method="post">
-                        <select name="id" class="Input">
-                            {% for actuator in actuators %}
-                            <option type = "text" name = "id" value= "{{actuator.id}}">{{ actuator.name }}</option>
-                            {% endfor %}
-                        </select>
+                        <select name="id" class="Input" required>
+                            {% if actuators|length == 0 %}
+                                <option value="" disabled selected>Sem atuadores disponíveis</option>
+                            {% else %}
+                                {% for actuator in actuators %}
+                                    <option value="{{ actuator.id }}">{{ actuator.name }}</option>
+                                {% endfor %}
+                            {% endif %}
+                        </select>                        
                         <p></p>
                         <p></p>
                         <p></p>
                         Início:
-                        <p><input type="datetime-local"  name="start" requires/></p>
+                        <p><input type="datetime-local"  name="start" required/></p>
                         Fim:
-                        <p><input type="datetime-local"  name="end" requires/></p>
+                        <p><input type="datetime-local"  name="end" required/></p>
                         <input type="submit" value="Carregar" class="btn btn-primary" />
                     </form>
                     {% if write|length> 0 %}

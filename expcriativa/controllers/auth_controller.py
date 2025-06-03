@@ -19,8 +19,8 @@ def add_user():
             return render_template("register_user.html", erro="Usuário ou email já cadastrado")
 
         # Se for o primeiro usuário, adiciona automaticamente o papel admin
-        if User.query.count() == 0 and "admin" not in roles:
-            roles.append("admin")
+        #if User.query.count() == 0 and "admin" not in roles:
+        #    roles.append("admin")
 
         novo_usuario = User(
             username=username,

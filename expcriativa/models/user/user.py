@@ -8,7 +8,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(50), unique=True)
     email = db.Column(db.String(128), unique=True)
     senha_hash = db.Column(db.String(200))
-    roles = db.Column(db.String(200), default="operador")
+    roles = db.Column(db.String(200))
 
     def set_senha(self, senha):
         self.senha_hash = generate_password_hash(senha)

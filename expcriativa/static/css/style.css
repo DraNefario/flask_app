@@ -478,3 +478,19 @@ input[type="datetime-local"] {
     border-radius: 8px;
     padding: 6px;
 }
+
+/*history*/
+.card-history{
+    width: 300px;
+    padding: 30px;
+    background-color: #d9d9d9;
+    color: black;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 18px;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
